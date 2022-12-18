@@ -17,7 +17,10 @@ const issueSchema = new mongoose.Schema({
         {
             type:String,
         }
-    ]
+    ],
+    project:{
+        type: mongoose.Schema.ObjectId
+    }
 });
 
 const Issue = mongoose.model('Issue',issueSchema);

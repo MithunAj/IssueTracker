@@ -1,5 +1,6 @@
 const Project = require('../models/project');
 const Issue = require('../models/issue');
+const Label = require('../models/label');
 
 module.exports.newProject = function(res,res){
 
@@ -18,8 +19,10 @@ module.exports.projectDetails = async function(req,res){
    
     let project = await Project.findById(req.params.id).populate('issues');
     let issues = project.issues;
+    let labels = await Label.find({});
     return res.render('project-details',{
         project : project,
-        issues : issues
+        issues : issues,
+        labels : labels
     })
 }

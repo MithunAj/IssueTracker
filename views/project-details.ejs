@@ -17,8 +17,43 @@
     <div>
         <button><a href="/issues/<%=project._id%>/newIssue">Create issue</a></button>
     </div>
+    <div>
+        <button><a href="/home">Home</a></button>
+    </div>
 
     <% if (locals.issues) {%>
+        <div>
+            <h4>Filter issues</h4>
+            <div>
+                <form action="/issues/<%=project._id%>/filter" method="post">
+                    <div>
+                        <label for="title">Title</label>
+                        <input type="text" name="title" placeholder="Filter by title">
+                    </div>
+                    <div>
+                        <label for="description">Description</label>
+                        <input type="text" name="description" placeholder="Filter by description">
+                    </div> 
+                    <div> 
+                        <label for="labels">Labels</label>
+                        <% for (label of locals.labels) {%>
+                        <input type="checkbox" id="<%=label.name%>" name="labels" value="<%=label.name%>">
+                        <label for="<%=label.name%>"><%=label.name%></label> 
+                    <%}%>
+                    </div>
+                    <div>
+                        <label for="author">Author</label>
+                        <input type="text" name="author" placeholder="Filter by author">
+                    </div>
+                    <div>
+                        <input type="submit" value="Filter">
+                    </div>
+                    <div>
+                        <button><a href="/projects/details/<%=project._id%>">Clear filter</a></button>
+                    </div>
+                </form>
+            </div>
+        </div>
         <h4>Issues</h4>
         <div>
         <%for (issue of locals.issues) {%> 

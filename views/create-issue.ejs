@@ -1,13 +1,14 @@
 <body>
     <div>
         <form action="/issues/<%=project_id%>/create" method="post">
-            <input type="text" name="title" placeholder="Enter the title">
-            <input type="text" name="description" placeholder="Enter the description">
+            <input type="text" name="title" placeholder="Enter the title" required>
+            <input type="text" name="description" placeholder="Enter the description" required>
             <% for (label of labels) {%>
             <input type="checkbox" id="<%=label.name%>" name="labels" value="<%=label.name%>">
             <label for="<%=label.name%>"><%=label.name%></label> 
             <%}%>
-            <input type="text" name="author" placeholder="Author">
+            <input type="text" name="author" placeholder="Author" required>
+
             <input type="submit" value="Create">
         </form>
     </div>
