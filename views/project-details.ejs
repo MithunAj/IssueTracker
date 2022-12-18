@@ -1,0 +1,49 @@
+<body>
+   <div>
+        <div>
+            <span>Name : </span>
+            <span><%=locals.project.name%></span>
+        </div>
+        <div>
+            <span>Author : </span>
+            <span><%=locals.project.author%></span>
+        </div>
+        <div>
+            <span>Description : </span>
+            <span><%=locals.project.description%></span>
+        </div>
+    </div>
+
+    <div>
+        <button><a href="/issues/<%=project._id%>/newIssue">Create issue</a></button>
+    </div>
+
+    <% if (locals.issues) {%>
+        <h4>Issues</h4>
+        <div>
+        <%for (issue of locals.issues) {%> 
+            <div>
+                <div>
+                    <span>Title :</span>
+                    <span><%=issue.title%></span>
+                </div>
+                <div>
+                    <span>Description :</span>
+                    <span><%=issue.description%></span>
+                </div>
+                <div>
+                    <span>Author :</span>
+                    <span><%=issue.author%></span>
+                </div>
+                <div>
+                    <span>Labels : </span>
+                    <%for (label of issue.labels) { %>
+                        <span><%= label %> |</span>
+                    <%}%>    
+                </div>
+            </div>    
+        <%}%>   
+        </div>
+    <%}%>
+    
+</body>
