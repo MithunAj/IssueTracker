@@ -4,25 +4,44 @@ const Project = require('../models/project');
 
 
 module.exports.createIssue =  async function(req,res){
-    let issue = await Issue.create(req.body);
-    issue.project = req.params.id;
-    issue.save();
-    await Project.findByIdAndUpdate(req.params.id,{$push:{issues:issue}});
+    try {
+        // creating the issue with the request body
+        let issue = await Issue.create(req.body);
+        //inserting the project id to the created issue
+        issue.project = req.params.id;
+        // saving the issue document
+        issue.save();
+        //finding and inserting the issue into issues array within the project
+        await Project.findByIdAndUpdate(req.params.id,{$push:{issues:issue}});
 
-    return res.redirect(`/projects/details/${req.params.id}`)
+        return res.redirect(`/projects/details/${req.params.id}`)
+    } catch (error) {
+        console.log(error);
+        return res.redirect('back');
+    }
+    
 }
 
 
 module.exports.newIssue =async  function(req,res){
-    let labels = await Labels.find({});
-    return res.render('create-issue',{
-        project_id : req.params.id,
-        labels : labels
-    });
+    try {
+        // fetching the all the labels
+        let labels = await Labels.find({});
+        // rendering the create-issue ejs page with labels and project id as local variables
+        return res.render('create-issue',{
+            project_id : req.params.id,
+            labels : labels
+        });
+    } catch (error) {
+        console.log(error);
+        return res.redirect('back');
+    }
+   
 }
 
 module.exports.filterIssues = async function(req,res){
-    // getting the project model for the current project for which the issue is being filtered
+    try {
+        // getting the project model for the current project for which the issue is being filtered
     let project = await Project.findById(req.params.id);
     // getting all the labels availabel in the DB
     let labels = await Labels.find({});
@@ -118,6 +137,11 @@ module.exports.filterIssues = async function(req,res){
             labels : labels
         })
     }
+    } catch (error) {
+        console.log(error);
+        return res.redirect('back');
+    }
+    
 
 
 }
