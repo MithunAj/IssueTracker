@@ -1,0 +1,95 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #e9eae0;
+}
+
+.title{
+    text-align: center;
+    margin: 5px;
+}
+
+#project-detail{
+    display: flex;
+    flex-direction: column;
+    justify-self: unset;
+    align-items: center;
+}
+
+.project-content{
+    width: 300px;
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    flex-wrap: wrap;
+}
+#filter-container{
+    display: flex;
+    flex-direction: column;
+    justify-self: unset;
+    align-items: center;
+}
+
+#form{
+    max-width: 300px;
+}
+
+a{
+    color: white;
+    text-decoration: none;
+}
+
+#project-detail-container{
+    padding: 5px;
+    background-color: antiquewhite;
+    border-radius: 5px;
+    box-shadow: 0px 0px 4px 4px #e4dfe0;
+}
+
+#form{
+    padding: 5px;
+    background-color: #ffdede;
+    border-radius: 5px;
+    box-shadow: 0px 0px 4px 4px #c9c9c9;
+}
+
+button{
+    border: none;
+    border: 1px solid white;
+    background-color: #ff7d7dc7;
+    border-radius: 8px;
+    box-shadow: 0px 0px 4px 1px #b40000;
+}
+
+#issue-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.issue-content{
+    margin: 5px;
+    padding: 5px;
+    width: 300px;
+    background-color: gold;
+    border-radius: 5px;
+    box-shadow: 0px 0px 4px 4px #cecccc;
+}
+
+.title input{
+    border: none;
+    border: 1px solid white;
+    background-color: #ff7d7dc7;
+    border-radius: 8px;
+    color: white;
+    box-shadow: 0px 0px 4px 1px #b40000;
+}
+
+button:hover{
+    box-shadow: 0px 0px 4px 2px #b40000;
+}
+.title input:hover{
+    box-shadow: 0px 0px 4px 2px #b40000;
+    cursor: pointer;
+}

@@ -1,19 +1,28 @@
-<body>
-    <h4>List of projects</h4>
-    <% if(projects){%>
-        <div>
-            <% for (project of projects) { %>
-                <div>
-                    <span><%=project.name%> <button><a href="/projects/details/<%=project._id%>">Details</a></button> </span>
-                </div>
-            <%}%>    
-        </div>
-    <%} else { %>
-        <div>
-            <h5>No projects to show</h5>
-        </div>
-    <%}%>
-    
-    <button><a href="/projects/new">Create project</a></button>
+<link rel="stylesheet" href="/css/home.css">
 
+<body>
+    <div id="heading">
+        <h2>  Welcome to issue tracker </h2>
+    </div>   
+    
+    <div id="container">
+        <h4>List of projects</h4>
+        <% if(projects){%>
+            <div class="project-list">
+                <% for (project of projects) { %>
+                    <div class="project">
+                        <span><%=project.name%> </span>
+                        <span><button><a href="/projects/details/<%=project._id%>">Details</a></button> </span>
+                    </div>
+                <%}%>    
+            </div>
+        <%} else { %>
+            <div>
+                <h5>No projects to show</h5>
+            </div>
+        <%}%>
+        <div id="create-project">
+            <button><a href="/projects/new">Create project</a></button>
+        </div>
+    </div>    
 </body>

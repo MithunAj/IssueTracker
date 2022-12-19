@@ -1,15 +1,28 @@
+<link rel="stylesheet" href="/css/create-issue.css">
 <body>
-    <div>
-        <form action="/issues/<%=project_id%>/create" method="post">
-            <input type="text" name="title" placeholder="Enter the title" required>
-            <input type="text" name="description" placeholder="Enter the description" required>
+    <div id="container">
+        <form action="/issues/<%=project_id%>/create" method="post" id="form">
+            <div class="content">
+                <input type="text" name="title" placeholder="Enter the title" required>
+            </div>
+            <div class="content">    
+                <textarea name="description" placeholder="Enter the description" required cols="30" rows="3"></textarea>
+            </div>    
+            <div class="title">
+                <span>Check Labels</span>
+            </div>
             <% for (label of labels) {%>
-            <input type="checkbox" id="<%=label.name%>" name="labels" value="<%=label.name%>">
-            <label for="<%=label.name%>"><%=label.name%></label> 
+            <div class="content">
+                <input type="checkbox" id="<%=label.name%>" name="labels" value="<%=label.name%>">
+                <label for="<%=label.name%>"><%=label.name%></label> 
+            </div>
             <%}%>
-            <input type="text" name="author" placeholder="Author" required>
-
-            <input type="submit" value="Create">
+            <div class="content">
+                <input type="text" name="author" placeholder="Author" required>
+            </div>
+            <div class="title">    
+                <input type="submit" value="Create">
+            </div>
         </form>
     </div>
 </body>

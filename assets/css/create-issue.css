@@ -1,0 +1,46 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: pink;
+}
+
+#container{
+    display: flex;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+#form{
+    padding: 5px;
+    border-radius: 5px;
+    background-color: #edffc8;
+    box-shadow: 0px 0px 3px 1px #747474;
+}
+.content{
+    margin: 5px;
+}
+
+input{
+    border-radius: 8px;
+    border: 1px solid black;
+}
+
+.title{
+    text-align: center;
+    
+}
+
+.title input{
+    margin: 5px;
+    border: none;
+    border: 1px solid white;
+    background-color: #ff7d7dc7;
+    border-radius: 8px;
+    box-shadow: 0px 0px 4px 1px #b40000;
+}
+
+.title input:hover{
+    box-shadow: 0px 0px 4px 2px #b40000;
+}

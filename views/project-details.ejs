@@ -1,79 +1,88 @@
+<link rel="stylesheet" href="/css/project-details.css">
 <body>
-   <div>
-        <div>
-            <span>Name : </span>
-            <span><%=locals.project.name%></span>
-        </div>
-        <div>
-            <span>Author : </span>
-            <span><%=locals.project.author%></span>
-        </div>
-        <div>
-            <span>Description : </span>
-            <span><%=locals.project.description%></span>
-        </div>
+   <h4 class="title">Details of the project <%=locals.project.name %></h4> 
+   <div id="project-detail">
+        <div id="project-detail-container">
+            <div class="project-content">
+                <span>Name : </span>
+                <span><%=locals.project.name%></span>
+            </div>
+            <div class="project-content">
+                <span>Author : </span>
+                <span><%=locals.project.author%></span>
+            </div>
+            <div class="project-content"> 
+                <span>Description : </span>
+                <span><%=locals.project.description%></span>
+            </div>
+            <div class="title">
+                <button><a href="/issues/<%=project._id%>/newIssue">Create issue</a></button>
+            </div>
+            <div class="title">
+                <button><a href="/home">Home</a></button>
+            </div>
+        </div>  
     </div>
 
-    <div>
-        <button><a href="/issues/<%=project._id%>/newIssue">Create issue</a></button>
-    </div>
-    <div>
-        <button><a href="/home">Home</a></button>
-    </div>
+    
 
     <% if (locals.issues) {%>
         <div>
-            <h4>Filter issues</h4>
-            <div>
-                <form action="/issues/<%=project._id%>/filter" method="post">
-                    <div>
-                        <label for="title">Title</label>
+            <h4 class="title">Filter issues</h4>
+            <div id="filter-container">
+                <form action="/issues/<%=project._id%>/filter" method="post" id="form">
+                    <div class="project-content">
+                        <label for="title">Title : </label>
                         <input type="text" name="title" placeholder="Filter by title">
                     </div>
-                    <div>
-                        <label for="description">Description</label>
+                    <div class="project-content">
+                        <label for="description">Description :</label>
                         <input type="text" name="description" placeholder="Filter by description">
                     </div> 
                     <div> 
-                        <label for="labels">Labels</label>
+                        <div class="title">
+                            <label for="labels">Labels</label>
+                        </div>
                         <% for (label of locals.labels) {%>
-                        <input type="checkbox" id="<%=label.name%>" name="labels" value="<%=label.name%>">
-                        <label for="<%=label.name%>"><%=label.name%></label> 
+                        <div>    
+                            <input type="checkbox" id="<%=label.name%>" name="labels" value="<%=label.name%>">
+                            <label for="<%=label.name%>"><%=label.name%></label> 
+                        </div>
                     <%}%>
                     </div>
-                    <div>
-                        <label for="author">Author</label>
+                    <div class="project-content">
+                        <label for="author">Author :</label>
                         <input type="text" name="author" placeholder="Filter by author">
                     </div>
-                    <div>
+                    <div class="title">
                         <input type="submit" value="Filter">
                     </div>
-                    <div>
+                    <div class="title">
                         <button><a href="/projects/details/<%=project._id%>">Clear filter</a></button>
                     </div>
                 </form>
             </div>
         </div>
-        <h4>Issues</h4>
-        <div>
+        <h4 class="title">Issues</h4>
+        <div id="issue-container">
         <%for (issue of locals.issues) {%> 
-            <div>
-                <div>
+            <div class="issue-content">
+                <div class="project-content">
                     <span>Title :</span>
                     <span><%=issue.title%></span>
                 </div>
-                <div>
+                <div class="project-content">
                     <span>Description :</span>
                     <span><%=issue.description%></span>
                 </div>
-                <div>
+                <div class="project-content">
                     <span>Author :</span>
                     <span><%=issue.author%></span>
                 </div>
-                <div>
+                <div class="project-content">
                     <span>Labels : </span>
                     <%for (label of issue.labels) { %>
-                        <span><%= label %> |</span>
+                        <span><%= label %> | </span>
                     <%}%>    
                 </div>
             </div>    
