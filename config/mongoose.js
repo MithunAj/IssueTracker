@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 // making a connection to mongo db 
-mongoose.connect('mongodb://localhost/IssueTracker');
+mongoose.connect('mongodb+srv://MithunAj:TqZQxDDMNLfQgTiG@cluster0.per79te.mongodb.net/IssueTracker?retryWrites=true&w=majority');
 
 //getting the mongo db connection to a varible
 const db = mongoose.connection;
